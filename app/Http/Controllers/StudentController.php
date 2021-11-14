@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -38,7 +38,6 @@ class StudentController extends Controller
    */
   public function store(Request $request)
   {
-
     $student = $request->validate([
       'nim' => ['required', 'string', 'unique:students,nim'],
       'name' => ['required', 'string'],
@@ -126,8 +125,9 @@ class StudentController extends Controller
 
   public function exportPDF()
   {
+    $students = Student::latest()->get();
 
-    $pdf = PDF::loadview('student-index', ['students' => Student::latest()->get()]);
+    $pdf = PDF::loadView('dompdf.student-index-pdf', ['students' => $students])->setOptions(['defaultFont' => 'sans-serif']);
     return $pdf->download('students.pdf');
   }
 }

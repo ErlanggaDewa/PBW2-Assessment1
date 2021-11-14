@@ -1,20 +1,22 @@
 <x-app-layout>
   <div class="flex items-center justify-center h-full pb-10 font-sans bg-gray-100 min-w-screen">
     <div class="fixed overflow-auto inset-x-3 lg:inset-x-20 bottom-10 top-24">
-      <div class="sticky left-0 flex items-center justify-between w-full h-20 px-3 bg-gray-300 lg:px-9">
+      <div class="sticky left-0 flex flex-wrap items-center justify-between w-full h-20 gap-2 px-3 bg-gray-300 lg:px-9">
         <h1 class="text-2xl font-bold text-gray-700">MAHASISWA</h1>
-        <a href="{{ route('student.create') }}">
-          <button
-            class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
-            <p class="text-sm font-medium leading-none text-white">New Data</p>
-          </button>
-        </a>
-        <a href="{{ route('student.exportPDF') }}">
-          <button
-            class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
-            <p class="text-sm font-medium leading-none text-white">Export PDF</p>
-          </button>
-        </a>
+        <div class="flex items-end gap-3">
+          <a href="{{ route('student.create') }}">
+            <button
+              class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
+              <p class="text-sm font-medium leading-none text-white">New Data</p>
+            </button>
+          </a>
+          <a href="{{ route('student.exportPDF') }}">
+            <button
+              class="inline-flex items-start justify-start px-6 py-3 bg-gray-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:ml-3 sm:mt-0 hover:bg-gray-600 focus:outline-none">
+              <p class="text-sm font-medium leading-none text-white">Export PDF</p>
+            </button>
+          </a>
+        </div>
       </div>
       @if ($students->count())
       <table class="w-full table-auto min-w-max">
@@ -23,6 +25,7 @@
             <th class="px-6 py-3 text-center">NIM</th>
             <th class="px-6 py-3 text-center">Nama</th>
             <th class="px-6 py-3 text-center">Kelas</th>
+            <th class="px-6 py-3 text-center">Gender</th>
             <th class="px-6 py-3 text-center">Alamat</th>
             <th class="px-6 py-3 text-center">Status</th>
             <th class="px-6 py-3 text-center">Aksi</th>
@@ -48,6 +51,11 @@
             <td class="px-6 py-3 text-center">
               <div class="flex items-center justify-center">
                 <span class="font-medium">{{ $student->class }}</span>
+              </div>
+            </td>
+            <td class="px-6 py-3 text-center">
+              <div class="flex items-center justify-center">
+                <span class="font-medium">{{ $student->gender }}</span>
               </div>
             </td>
             <td class="px-6 py-3 text-center">

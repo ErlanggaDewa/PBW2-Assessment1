@@ -20,10 +20,12 @@ Route::middleware(['auth'])->group(function () {
     return view('dashboard');
   })->name('dashboard');
 
+  Route::get('/student/export-pdf', [StudentController::class, 'exportPDF'])->name('student.exportPDF');
+
   Route::resource('student', StudentController::class);
 
   Route::get('/book', function () {
-    return view('dashboard');
+    return view('book');
   })->name('book.index');
 
 

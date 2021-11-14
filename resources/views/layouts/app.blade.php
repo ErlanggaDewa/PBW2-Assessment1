@@ -20,6 +20,8 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -42,6 +44,7 @@
     </main>
   </div>
 
+  @livewireScripts
 </body>
 
 </html>

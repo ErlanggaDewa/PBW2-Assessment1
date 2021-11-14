@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
       $table->string('author');
       $table->bigInteger('price');
       $table->integer('release_year');
-      $table->text('description');
+      $table->string('status');
       $table->string('img')->nullable();
       $table->timestamps();
     });

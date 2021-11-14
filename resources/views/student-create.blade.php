@@ -185,7 +185,7 @@
             </div>
             <div class="relative w-full lg:w-6/12 ">
               <label class="block mb-2 text-xs font-bold uppercase ">
-                Attach Document
+                Attach Image
               </label>
               <div id="drop-area" class="flex items-center justify-center w-full">
                 <label id="border-drop-area"
