@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Routing\Controller;
 
 class StudentController extends Controller
@@ -92,7 +93,7 @@ class StudentController extends Controller
   public function update(Request $request, Student $student)
   {
     $studentData = $request->validate([
-      'nim' => ['required', 'string', 'unique:students,nim'],
+      'nim' => ['required', 'string', Rule::unique('students')->ignore($student)],
       'name' => ['required', 'string'],
       'gender' => ['required', 'string'],
       'class' => ['required', 'string'],

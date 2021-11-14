@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\StudentController;
 
 /*
@@ -21,12 +22,12 @@ Route::middleware(['auth'])->group(function () {
   })->name('dashboard');
 
   Route::get('/student/export-pdf', [StudentController::class, 'exportPDF'])->name('student.exportPDF');
-
   Route::resource('student', StudentController::class);
 
   Route::get('/book', function () {
     return view('book');
   })->name('book.index');
+  Route::get('/book/export-pdf', [BookController::class, 'exportPDF'])->name('book.exportPDF');
 
 
   Route::fallback(function () {

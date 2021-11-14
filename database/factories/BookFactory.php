@@ -22,7 +22,7 @@ class BookFactory extends Factory
       'price' => $this->faker->randomNumber(6, true),
       'release_year' => $this->faker->year(),
       'status' => Arr::random($status),
-      'img' => 'default.png'
+      'description' => $this->faker->paragraph(6)
     ];
   }
 }

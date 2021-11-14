@@ -2,16 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\WithFileUploads;
 use App\Models\Book;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
 class BookCreate extends Component
 {
-  use WithFileUploads;
 
-  public $isbn, $title, $author, $price, $release_year, $status, $img;
+  public $isbn, $title, $author, $price, $release_year, $status, $description;
   public function render()
   {
     return view('livewire.book-create');
@@ -26,18 +24,9 @@ class BookCreate extends Component
       'price' => ['required', 'numeric'],
       'release_year' => ['required', 'numeric'],
       'status' => ['required', 'string'],
+      'description' => ['required', 'string'],
     ]);
-    dd($this);
-    if ($this->hasFile('img')) {
-      if ($this->file('img')->isValid()) {
-        $data['img'] = $this->file('img')->store('public/img');
-        $data['img'] = Str::afterLast($data['img'], '/');
-      } else {
-        dd($this->file());
-      }
-    } else {
-      $data['img'] = 'default.png';
-    }
+
 
     $book = Book::create($data);
 
@@ -54,6 +43,6 @@ class BookCreate extends Component
     $this->price = null;
     $this->release_year = null;
     $this->status = null;
-    $this->img = null;
+    $this->description = null;
   }
 }

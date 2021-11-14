@@ -9,11 +9,11 @@
           </h6>
           <div class="flex gap-x-2">
 
-            <button @click="openCreate = false"
+            <button @click="openUpdate = false"
               class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-yellow-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none">
               Back
             </button>
-            <button
+            <button wire:click.prevent="update"
               class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-green-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none"
               type="submit" form="form_create">
               Submit
