@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -121,5 +122,12 @@ class StudentController extends Controller
   {
     $student->delete();
     return redirect()->route('student.index')->withToastSuccess('Data Berhasil Dihapus');
+  }
+
+  public function exportPDF()
+  {
+
+    $pdf = PDF::loadview('student-index', ['students' => Student::latest()->get()]);
+    return $pdf->download('students.pdf');
   }
 }

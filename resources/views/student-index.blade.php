@@ -9,6 +9,12 @@
             <p class="text-sm font-medium leading-none text-white">New Data</p>
           </button>
         </a>
+        <a href="{{ route('student.exportPDF') }}">
+          <button
+            class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
+            <p class="text-sm font-medium leading-none text-white">Export PDF</p>
+          </button>
+        </a>
       </div>
       @if ($students->count())
       <table class="w-full table-auto min-w-max">
