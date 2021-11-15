@@ -11,7 +11,7 @@ class BookIndex extends Component
   public $showCreate = false, $showUpdate = false, $showDetail = false;
 
   protected $listeners = [
-    'bookHandlerCreate', 'bookHandlerUpdate'
+    'bookHandlerCreate', 'bookHandlerUpdate', 'destroy'
   ];
 
 
@@ -51,6 +51,11 @@ class BookIndex extends Component
     $this->showDetail = true;
     $book = Book::find($id);
     $this->emit('bookHandlerDelete', $book);
+  }
+
+  public function confirmDelete($id, $title)
+  {
+    $this->dispatchBrowserEvent('swal:delete', ['title' => $title, 'id' => $id]);
   }
 
   public function destroy($id)

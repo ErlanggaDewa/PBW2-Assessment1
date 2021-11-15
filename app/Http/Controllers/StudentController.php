@@ -47,12 +47,11 @@ class StudentController extends Controller
       'address' => ['required', 'string'],
       'status' => ['required', 'string'],
     ]);
+
     if ($request->hasFile('img')) {
       if ($request->file('img')->isValid()) {
         $student['img'] = $request->file('img')->store('public/img');
         $student['img'] = Str::afterLast($student['img'], '/');
-      } else {
-        dd($request->file());
       }
     } else {
       $student['img'] = 'default.png';

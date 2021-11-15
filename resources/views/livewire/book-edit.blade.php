@@ -1,14 +1,13 @@
-<div class="fixed inset-0 z-50 flex items-center" style="background-color: rgba(128, 128, 128, 0.5)">
+<div class="fixed inset-0 z-50 px-3 py-5 " style="background-color: rgba(128, 128, 128, 0.5)">
 
-  <div class="w-full px-4 mx-auto mt-6 lg:w-3/4 ">
-    <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-gray-100 border-0 rounded-lg shadow-2xl ">
-      <div class="px-6 py-6 mb-0 bg-white rounded-t">
-        <div class="flex justify-between text-center">
+  <div class="relative w-full h-full mx-auto overflow-auto lg:w-3/4">
+    <div class="relative flex flex-col w-full break-words bg-gray-100 border-0 rounded-lg shadow-2xl ">
+      <div class="sticky top-0 z-50 px-6 py-6 mb-0 bg-white rounded-t shadow-md">
+        <div class="flex flex-wrap justify-between text-center gap-y-3">
           <h6 class="text-xl font-bold ">
-            Tambah Mahasiswa
+            Edit Buku
           </h6>
-          <div class="flex gap-x-2">
-
+          <div class="flex gap-2">
             <button @click="openUpdate = false"
               class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-yellow-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none">
               Back
@@ -21,6 +20,7 @@
           </div>
         </div>
       </div>
+
       <div class="flex-auto px-4 py-10 pt-0 lg:px-10">
         <form wire:submit.prevent="store" enctype="multipart/form-data" id="form_create">
           <h6 class="mt-3 mb-6 text-sm font-bold uppercase ">
@@ -154,7 +154,7 @@
               </div>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex flex-col lg:flex-row">
             <div class="flex flex-col w-full gap-6 px-4 lg:flex-row">
               <div class="relative w-full ">
                 <label class="block mb-2 text-xs font-bold uppercase ">
@@ -162,7 +162,7 @@
                 </label>
                 <textarea wire:model="title" type="text"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                  rows="10"></textarea>
+                  rows="15"></textarea>
 
                 {{-- error msg --}}
                 @error('title')
@@ -188,7 +188,7 @@
                 </label>
                 <textarea wire:model="description" type="text"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                  rows="10"></textarea>
+                  rows="15"></textarea>
 
                 {{-- error msg --}}
                 @error('description')

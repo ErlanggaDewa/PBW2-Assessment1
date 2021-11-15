@@ -1,29 +1,31 @@
-<div class="fixed inset-0 z-50 flex items-center" style="background-color: rgba(128, 128, 128, 0.5)">
+<div class="fixed inset-0 z-50 items-center px-3 py-5" style="background-color: rgba(128, 128, 128, 0.5)">
 
-  <div class="w-full px-4 mx-auto mt-6 lg:w-3/4 ">
-    <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-gray-100 border-0 rounded-lg shadow-2xl ">
-      <div class="px-6 py-6 mb-0 bg-white rounded-t">
-        <div class="flex justify-between text-center">
-          <h6 class="text-xl font-bold ">
-            Tambah Mahasiswa
-          </h6>
-          <div class="flex gap-x-2">
+  <div class="items-center w-full h-full mx-auto overflow-auto lg:flex lg:w-3/4">
+    <div class="relative flex flex-col w-full min-w-0 break-words bg-gray-100 border-0 rounded-lg shadow-2xl ">
+      <div class="sticky top-0 z-50 shadow-md">
+        <div class="px-6 py-6 mb-0 bg-white rounded-t">
+          <div class="flex flex-wrap justify-between text-center gap-y-3">
+            <h6 class="text-xl font-bold ">
+              Tambah Buku
+            </h6>
+            <div class="flex gap-x-2">
 
-            <button @click="openCreate = false"
-              class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-yellow-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none">
-              Back
-            </button>
-            <button
-              class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-green-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none"
-              type="submit" form="form_create">
-              Submit
-            </button>
+              <button @click="openCreate = false"
+                class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-yellow-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none">
+                Back
+              </button>
+              <button
+                class="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-green-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-md focus:outline-none"
+                type="submit" form="form_create">
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <div class="flex-auto px-4 py-10 pt-0 lg:px-10">
         <form wire:submit.prevent="store" enctype="multipart/form-data" id="form_create">
-          <h6 class="mt-3 mb-6 text-sm font-bold uppercase ">
+          <h6 class="w-full px-4 mt-5 mb-6 text-sm font-bold uppercase ">
             Informasi Buku
           </h6>
           <div class="flex flex-wrap">
@@ -154,7 +156,7 @@
               </div>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex flex-col lg:flex-row ">
             <div class="flex flex-col w-full gap-6 px-4 lg:flex-row">
               <div class="relative w-full ">
                 <label class="block mb-2 text-xs font-bold uppercase ">

@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="w-full px-4 mx-auto mt-6 lg:w-3/4 ">
     <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-gray-100 border-0 rounded-lg shadow-2xl ">
-      <div class="px-6 py-6 mb-0 bg-white rounded-t">
+      <div class="sticky top-0 z-50 px-6 py-6 mb-0 bg-white rounded-t shadow-md">
         <div class="flex justify-between text-center">
           <h6 class="text-xl font-bold ">
             Edit Mahasiswa
@@ -191,15 +191,20 @@
               <label class="block mb-2 text-xs font-bold uppercase ">
                 Attach Image
               </label>
-              <div id="drop-area" class="flex items-center justify-center w-full">
+              <div id="drop-area" class="relative flex items-center justify-center w-full">
                 <label id="border-drop-area"
-                  class="flex flex-col w-full h-56 p-10 text-center border-4 border-dashed rounded-lg cursor-pointer group ">
+                  class="relative z-50 flex flex-col w-full h-56 p-10 text-center border-4 border-dashed rounded-lg cursor-pointer group">
                   <div class="flex flex-col items-center justify-center w-full h-full text-center ">
                     <div id="preview-container" class="absolute block ">
                       <img id="preview-img" src="{{asset('storage/img') }}/{{ $student->img }}" class="h-56 p-3">
                     </div>
+                    <p id="info-upload"
+                      class="absolute inset-0 z-50 flex items-center justify-center text-xl font-bold rounded-lg pointer-none"
+                      style="">
+                    </p>
                   </div>
-                  <input name="img" type="file" accept="image/*" class="hidden" onchange="uploadHandler(event)">
+                  <input id="input-img" name="img" type="file" accept="image/*" class="hidden"
+                    onchange="uploadHandler(event)">
                 </label>
               </div>
             </div>
@@ -208,5 +213,5 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="{{ asset('js/uploadFile.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/uploadFileEditStudent.js') }}"></script>
 </x-app-layout>

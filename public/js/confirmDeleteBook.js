@@ -1,4 +1,4 @@
-function confirmDelete(name) {
+window.addEventListener("swal:delete", (event) => {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
@@ -10,7 +10,7 @@ function confirmDelete(name) {
   swalWithBootstrapButtons
     .fire({
       title: "Apa kamu yakin?",
-      text: `Kamu tidak dapat mengembalikan data ${name} !`,
+      text: `Kamu tidak dapat mengembalikan data ${event.detail.title} !`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
@@ -20,10 +20,9 @@ function confirmDelete(name) {
     .then((result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons
-          .fire("Deleted!", `Menghapus data : ${name}`, "success")
+          .fire("Deleted!", `Menghapus data : ${event.detail.title}`, "success")
           .then(() => {
-            const formDelete = document.getElementById("form-delete");
-            formDelete.submit();
+            window.livewire.emit("destroy", event.detail.id);
           });
       } else if (
         /* Read more about handling dismissals below */
@@ -31,9 +30,9 @@ function confirmDelete(name) {
       ) {
         swalWithBootstrapButtons.fire(
           "Cancelled",
-          `Gagal menghapus data : ${name}`,
+          `Gagal menghapus data : ${event.detail.title}`,
           "error"
         );
       }
     });
-}
+});

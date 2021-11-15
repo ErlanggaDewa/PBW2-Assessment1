@@ -97,10 +97,11 @@
                 {{-- end edit student --}}
 
                 {{-- delete student --}}
-                <form id="form-delete" action="{{ route('student.destroy', $student->id) }}" method="POST">
+                <form id="form-delete-{{ $student->id }}" action="{{ route('student.destroy', $student->id) }}"
+                  method="POST">
                   @csrf
                   @method('DELETE')
-                  <div onclick="confirmDelete('{{ $student->name }}')" id="button-delete"
+                  <div onclick='confirmDelete("{{ $student->name }}",{{ $student->id }})' id="button-delete"
                     class="w-4 mr-2 transform cursor-pointer hover:text-red-500 hover:scale-110">
                     <i class="far fa-trash-alt"></i>
                   </div>
@@ -122,5 +123,5 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="{{ asset('js/confirmDelete.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/confirmDeleteStudent.js') }}"></script>
 </x-app-layout>

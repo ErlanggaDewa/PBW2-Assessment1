@@ -17,7 +17,7 @@ class BookFactory extends Factory
     $status = ['Tersedia', 'Terjual', 'Disewa', 'Rusak'];
     return [
       'isbn' => $this->faker->unique()->isbn10(),
-      'title' => $this->faker->word(),
+      'title' => $this->faker->words(2, true),
       'author' => $this->faker->name(),
       'price' => $this->faker->randomNumber(6, true),
       'release_year' => $this->faker->year(),

@@ -1,8 +1,8 @@
-<div x-show="openDetail" class="fixed inset-0 z-50 flex items-center justify-center py-10 overflow-auto"
-  style=" background-color:rgba(192, 192, 192, 0.74)">
-  <div class="flex items-center justify-center w-full px-4">
-    <div class="w-full max-w-5xl bg-white rounded-lg shadow-xl">
-      <div class="flex items-center justify-between p-4 border-b">
+<div x-show="openDetail" class="fixed inset-0 z-50 items-center px-3 py-5"
+  style=" background-color:rgba(192, 192, 192, 0.5)">
+  <div class="items-center w-full h-full mx-auto overflow-auto lg:flex lg:w-3/4">
+    <div class="w-full max-w-5xl bg-white rounded-lg shadow-xl ">
+      <div class="sticky top-0 z-50 flex items-center justify-between p-4 bg-white border-b shadow-md">
         <div>
           <h2 class="text-2xl ">
             Informasi Buku

@@ -34,7 +34,7 @@
                 <label class="block mb-2 text-xs font-bold uppercase">
                   Nama
                 </label>
-                <input value="{{ old('name') }}" required name="name" type="text"
+                <input value="{{ old('name') }}" name="name" type="text"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring">
 
                 {{-- error msg --}}
@@ -57,7 +57,7 @@
                 <label class="block mb-2 text-xs font-bold uppercase ">
                   NIM
                 </label>
-                <input value="{{ old('nim') }}" required name="nim" type="text"
+                <input value="{{ old('nim') }}" name="nim" type="text"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring">
 
                 {{-- error msg --}}
@@ -80,7 +80,7 @@
                 <label class="block mb-2 text-xs font-bold uppercase ">
                   Kelas
                 </label>
-                <input value="{{ old('class') }}" required name="class" type="text"
+                <input value="{{ old('class') }}" name="class" type="text"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring">
 
                 {{-- error msg --}}
@@ -106,7 +106,7 @@
                 </label>
                 <select
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                  required name="status" id="status">
+                  name="status" id="status">
                   <option value="{{ old('status') }}" selected="selected" hidden="hidden">Choose one</option>
                   <option value="Reguler">Reguler</option>
                   <option value="Beasiswa">Beasiswa</option>
@@ -137,7 +137,7 @@
                 </label>
                 <select
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                  required name="gender" id="gender">
+                  name="gender" id="gender">
                   <option value="{{ old('gender') }}" selected="selected" hidden="hidden">Choose one</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
@@ -165,7 +165,7 @@
               <label class="block mb-2 text-xs font-bold uppercase ">
                 Alamat
               </label>
-              <textarea required name="address" type="text"
+              <textarea name="address" type="text"
                 class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 rows="10">{{ old('address') }}</textarea>
 
@@ -187,21 +187,25 @@
               <label class="block mb-2 text-xs font-bold uppercase ">
                 Attach Image
               </label>
-              <div id="drop-area" class="flex items-center justify-center w-full">
+              <div id="drop-area" class="relative flex items-center justify-center w-full">
                 <label id="border-drop-area"
-                  class="flex flex-col w-full h-56 p-10 text-center border-4 border-dashed rounded-lg group ">
+                  class="relative z-50 flex flex-col w-full h-56 p-10 text-center border-4 border-dashed rounded-lg cursor-pointer group">
                   <div class="flex flex-col items-center justify-center w-full h-full text-center ">
                     <div id="preview-container" class="absolute block ">
                       <img id="preview-img" class="h-56 p-3">
                     </div>
 
-                    <p id="info-upload" class="text-gray-500 pointer-none ">Drag and drop
+                    <p id="info-upload"
+                      class="absolute inset-0 z-50 flex items-center justify-center text-xl font-bold rounded-lg pointer-none">
+                      Drag
+                      and drop
                       files here
                       <br>
                       or select a file from your computer
                     </p>
                   </div>
-                  <input name="img" type="file" accept="image/*" class="hidden" onchange="uploadHandler(event)">
+                  <input id="input-img" name="img" type="file" accept="image/*" class="hidden"
+                    onchange="uploadHandler(event)">
                 </label>
               </div>
             </div>
@@ -210,5 +214,5 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="{{ asset('js/uploadFile.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/uploadFileStudent.js') }}"></script>
 </x-app-layout>

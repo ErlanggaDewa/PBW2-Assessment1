@@ -14,10 +14,11 @@
   <div class="flex items-center justify-center h-full pb-10 font-sans bg-gray-100 min-w-screen">
 
     <div class="fixed overflow-auto inset-x-3 lg:inset-x-20 bottom-10 top-24">
+
       {{-- Alert flasher --}}
       <div>
         @if (session()->has('bookAdded'))
-        <div class="py-4 text-center bg-indigo-700 lg:px-4" x-data="{flash : true}" x-show="flash">
+        <div class="py-4 text-center bg-indigo-700 rounded-t-xl lg:px-4" x-data="{flash : true}" x-show="flash">
           <div class="flex items-center p-2 leading-none text-indigo-100 bg-indigo-800 lg:rounded-full lg:inline-flex"
             role="alert">
             <span class="flex px-2 py-1 mr-3 text-xs font-bold uppercase bg-indigo-500 rounded-full">New</span>
@@ -32,7 +33,7 @@
           </div>
         </div>
         @elseif (session()->has('bookUpdated'))
-        <div class="py-4 text-center bg-yellow-700 lg:px-4" x-data="{flash : true}" x-show="flash">
+        <div class="py-4 text-center bg-yellow-700 rounded-t-xl lg:px-4" x-data="{flash : true}" x-show="flash">
           <div class="flex items-center p-2 leading-none text-yellow-100 bg-yellow-800 lg:rounded-full lg:inline-flex"
             role="alert">
             <span class="flex px-2 py-1 mr-3 text-xs font-bold uppercase bg-yellow-500 rounded-full">New</span>
@@ -47,7 +48,7 @@
           </div>
         </div>
         @elseif (session()->has('bookDeleted'))
-        <div class="py-4 text-center bg-red-700 lg:px-4" x-data="{flash : true}" x-show="flash">
+        <div class="py-4 text-center bg-red-700 rounded-t-xl lg:px-4" x-data="{flash : true}" x-show="flash">
           <div class="flex items-center p-2 leading-none text-red-100 bg-red-800 lg:rounded-full lg:inline-flex"
             role="alert">
             <span class="flex px-2 py-1 mr-3 text-xs font-bold uppercase bg-red-500 rounded-full">New</span>
@@ -63,21 +64,28 @@
         </div>
         @endif
       </div>
-      <div class="sticky left-0 flex flex-wrap items-center justify-between w-full h-20 gap-2 px-3 bg-gray-300 lg:px-9">
+
+      <div
+        class="sticky left-0 flex flex-wrap items-center justify-between w-full gap-3 px-3 py-6 bg-gray-300 lg:px-9 ">
         <h1 class="text-2xl font-bold text-gray-700">BUKU</h1>
-        <div class="flex items-end gap-3">
-          <button @click="openCreate = true"
-            class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
-            <p class="text-sm font-medium leading-none text-white">New Data</p>
-          </button>
-          <a href="{{ route('book.exportPDF') }}">
-            <button
-              class="inline-flex items-start justify-start px-6 py-3 bg-gray-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:ml-3 sm:mt-0 hover:bg-gray-600 focus:outline-none">
-              <p class="text-sm font-medium leading-none text-white">Export PDF</p>
+        <div class="">
+
+          <div class="flex items-end gap-3">
+            <button @click="openCreate = true"
+              class="inline-flex items-start justify-start px-6 py-3 bg-blue-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 sm:ml-3 sm:mt-0 hover:bg-blue-600 focus:outline-none">
+              <p class="text-sm font-medium leading-none text-white">New Data</p>
             </button>
-          </a>
+            <a href="{{ route('book.exportPDF') }}">
+              <button
+                class="inline-flex items-start justify-start px-6 py-3 bg-gray-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:ml-3 sm:mt-0 hover:bg-gray-600 focus:outline-none">
+                <p class="text-sm font-medium leading-none text-white">Export PDF</p>
+              </button>
+            </a>
+          </div>
         </div>
       </div>
+      {{-- End Alert flasher --}}
+
       @if ($books->count())
       <table class="w-full table-auto min-w-max">
         <thead class="sticky top-0 z-50">
@@ -152,9 +160,7 @@
                 {{-- end edit book --}}
 
                 {{-- delete book --}}
-                <div
-                  onclick="confirm('Yakin ingin menghapus buku dengan judul : {{ $book->title }}') || event.stopImmediatePropagation()"
-                  wire:click="destroy({{ $book->id }})" id="button-delete"
+                <div wire:click='confirmDelete({{ $book->id }}, "{{ $book->title }}")' id="button-delete"
                   class="w-4 mr-2 transform cursor-pointer hover:text-red-500 hover:scale-110">
                   <i class="far fa-trash-alt"></i>
                 </div>
@@ -175,5 +181,5 @@
     </div>
   </div>
 </section>
-
-<script type="text/javascript" src="{{ asset('js/confirmDelete.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/confirmDeleteBook.js') }}">
+</script>
