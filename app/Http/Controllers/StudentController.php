@@ -104,8 +104,6 @@ class StudentController extends Controller
         $studentData['img'] = $request->file('img')->store('public/img');
         $studentData['img'] = Str::afterLast($studentData['img'], '/');
       }
-    } else {
-      $studentData['img'] = 'default.png';
     }
     $student->update($studentData);
     return redirect()->route('student.index')->withToastSuccess('Data Berhasil Diubah');
